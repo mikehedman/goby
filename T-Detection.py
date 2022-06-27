@@ -77,12 +77,15 @@ def TROI(image):
 
     rectangle = cv2.rectangle(image, (TXPos[0], TYPosL[0]), (TXPos[1], TYPosR[1]), (255, 255, 255), -1)
 
+    if (TYPosR[0] > 100 and TYPosL[0] > 100):
+        return imageText(rectangle, "STOP")
+
     return rectangle
 
 
 def main():
     print("Hello World")
-    image = cv2.imread("images/t-middle.png")
+    image = cv2.imread("images/t_far.png")
 
     cv2.imshow("test", image)
     cv2.waitKey(0)
