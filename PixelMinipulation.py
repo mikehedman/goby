@@ -3,6 +3,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
+def imageText(image, words):
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    # org
+    org = (50, 50)
+    # fontScale
+    fontScale = 1
+    # Blue color in BGR
+    color = (255, 0, 0)
+    # Line thickness of 2 px
+    thickness = 2
+    # Using cv2.putText() method
+    TI = cv2.putText(image, words, org, font, fontScale, color, thickness, cv2.LINE_AA)
+    return TI
 
 def canny(image):
     # GreyScale conversion
@@ -43,36 +56,54 @@ def getPointsOfChangeBottom(image):
             xPositions.append(i)
     print("Bottom position 1: " + str(xPositions[0]))
     print("Bottom position 2: " + str(xPositions[1]))
-
     return xPositions
 
-def findRegion(image):
+def findROI(image):
     height = image.shape[0]
     width = image.shape[1]
 
     xTopPositions = getPointsOfChangeTop(image)
     xBottomPositions = getPointsOfChangeBottom(image)
 
-
     print(xBottomPositions[0])
     print(xTopPositions[1])
 
+    if(xBottomPositions[0] > xTopPositions[0]):
+        rectangle = cv2.rectangle(image, (xBottomPositions[1], height), (xTopPositions[0], 0), (255, 255, 255), -1)
 
-    rectangle = cv2.rectangle(image, (xBottomPositions[0], height), (xTopPositions[1], 0), (255, 255, 255), -1)
+    else:
+        rectangle = cv2.rectangle(image, (xBottomPositions[0], height), (xTopPositions[1], 0), (255, 255, 255), -1)
 
     return rectangle
 
 def findAngle(image, xTopPositions, xBottomPositions):
     height = image.shape[0]
-    m = (xTopPositions[0] - xBottomPositions[0])/(0 - height)
+    deltaX = xTopPositions[0] - xBottomPositions[0]
+
+
+    if (deltaX == 0):
+        print("straight")
+
+        return imageText(image, "Image is Straight")
+
+    m = (0 - height)/(xTopPositions[0] - xBottomPositions[0])
+
+    theta = -math.atan(m) * (180.0/math.pi)
+
     if(m <= 0):
-        print("(if m less than 0) angle: " + str(math.atan(m)))
+        print("(slope less than 0) angle: " + str(theta))
+
+        return imageText(image, str(round(theta,3)) + " degree angle")
+
     else:
-        print("angle: " + math.atan(m))
+        print("angle: " + str(theta))
+
+        return imageText(image, str(round(theta, 3)) + " degree angle")
+
 
 def main():
     print("Hello World")
-    image = cv2.imread("straight.png")
+    image = cv2.imread("images/straight.png")
 
     cv2.imshow("test", image)
     cv2.waitKey(0)
@@ -88,13 +119,18 @@ def main():
     xTopPositions = getPointsOfChangeTop(cannyImage)
     xBottomPositions = getPointsOfChangeBottom(cannyImage)
 
+    # plt just shows it on a graph with some nicer UI features
     #plt.imshow(cannyImage)
     #plt.show()
 
-    regionOfInterest = findRegion(cannyImage)
+    regionOfInterest = findROI(cannyImage)
     cv2.imshow("result", regionOfInterest)
     cv2.waitKey(0)
 
-    findAngle(regionOfInterest, xTopPositions, xBottomPositions)
+    angleImage = findAngle(laneImage, xTopPositions, xBottomPositions)
+
+    cv2.imshow("angle", angleImage)
+    cv2.waitKey(0)
+
 
 main()
