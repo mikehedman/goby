@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8619f56e-aad0-4d25-b7b8-38217135c381" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/T-Detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/T-Detection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PixelMinipulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/PixelMinipulation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +30,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
-  <component name="RunManager" selected="Python.T-Detection">
+  <component name="RunManager" selected="Python.PixelMinipulation">
     <configuration name="PixelMinipulation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="goby" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -74,8 +75,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.T-Detection" />
         <item itemvalue="Python.PixelMinipulation" />
+        <item itemvalue="Python.T-Detection" />
       </list>
     </recent_temporary>
   </component>

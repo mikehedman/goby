@@ -59,32 +59,36 @@ def getPointsOfChangeBottom(image):
     return xPositions
 
 def findROI(image):
-    height = image.shape[0]
-    width = image.shape[1]
 
-    xTopPositions = getPointsOfChangeTop(image)
-    xBottomPositions = getPointsOfChangeBottom(image)
+    copyImage = np.copy(image)
+    height = copyImage.shape[0]
+    width = copyImage.shape[1]
+
+    xTopPositions = getPointsOfChangeTop(copyImage)
+    xBottomPositions = getPointsOfChangeBottom(copyImage)
 
     print(xBottomPositions[0])
     print(xTopPositions[1])
 
     if(xBottomPositions[0] > xTopPositions[0]):
-        rectangle = cv2.rectangle(image, (xBottomPositions[1], height), (xTopPositions[0], 0), (255, 255, 255), -1)
+        rectangle = cv2.rectangle(copyImage, (xBottomPositions[1], height), (xTopPositions[0], 0), (255, 255, 255), -1)
 
     else:
-        rectangle = cv2.rectangle(image, (xBottomPositions[0], height), (xTopPositions[1], 0), (255, 255, 255), -1)
+        rectangle = cv2.rectangle(copyImage, (xBottomPositions[0], height), (xTopPositions[1], 0), (255, 255, 255), -1)
 
     return rectangle
 
 def findAngle(image, xTopPositions, xBottomPositions):
-    height = image.shape[0]
+    copyImage = np.copy(image)
+
+    height = copyImage.shape[0]
     deltaX = xTopPositions[0] - xBottomPositions[0]
 
 
     if (deltaX == 0):
         print("straight")
 
-        return imageText(image, "Image is Straight")
+        return imageText(copyImage, "Image is Straight"), 0
 
     m = (0 - height)/(xTopPositions[0] - xBottomPositions[0])
 
@@ -93,17 +97,62 @@ def findAngle(image, xTopPositions, xBottomPositions):
     if(m <= 0):
         print("(slope less than 0) angle: " + str(theta))
 
-        return imageText(image, str(round(theta,3)) + " degree angle")
+        return imageText(copyImage, str(round(theta,3)) + " degree angle"), theta
 
     else:
         print("angle: " + str(theta))
 
-        return imageText(image, str(round(theta, 3)) + " degree angle")
+        return imageText(copyImage, str(round(theta, 3)) + " degree angle"), theta
 
+
+def findPos(image):
+
+    pointsOfChangeTop = getPointsOfChangeTop(image)
+    print(pointsOfChangeTop)
+    pointsOfChangeBottom = getPointsOfChangeBottom(image)
+    print(pointsOfChangeBottom)
+    angleImage, angle = findAngle(image, getPointsOfChangeTop(image), getPointsOfChangeBottom(image))
+
+    if(angle == 0):
+        topMedianPos = int(float(pointsOfChangeTop[1] + pointsOfChangeTop[0])/2)
+        print(topMedianPos)
+        botMedianPos = int(float(pointsOfChangeBottom[1] + pointsOfChangeBottom[0])/2)
+        print(botMedianPos)
+        averageMedian = int(float(topMedianPos + botMedianPos)/2)
+        print(averageMedian)
+
+        if(220 <= averageMedian and averageMedian <= 320):
+            print("position does not need to be changed")
+            print("line position is "  + str(abs(int((float(image.shape[1]/2))) - averageMedian)) + " pixels away from the median line")
+        else:
+            if(averageMedian < (image.shape[1]/2)):
+                print("line position is " + str(abs(int((float(image.shape[1]/2))) - averageMedian)) + " pixels to the left of the median line")
+            else:
+                print("line position is " + str(abs(int((float(image.shape[1]/2))) - averageMedian)) + " pixels to the right of the median line")
+
+    else:
+        topMedianPos = int(float(pointsOfChangeTop[1] + pointsOfChangeTop[0]) / 2)
+        print(topMedianPos)
+        botMedianPos = int(float(pointsOfChangeBottom[1] + pointsOfChangeBottom[0]) / 2)
+        print(botMedianPos)
+        averageMedian = int(float(topMedianPos + botMedianPos) / 2)
+        print(averageMedian)
+
+        if (220 <= averageMedian and averageMedian <= 320):
+            print("position does not need to be changed, angle does need to be changed")
+            print("line positionis " + str(abs(int((float(image.shape[1]/2))) - averageMedian)) + " pixels away from the median line")
+        else:
+            print("position and angle need to be changed")
+            if(averageMedian < (image.shape[1]/2)):
+                print("line position is " + str(abs(int((float(image.shape[1]/2))) - averageMedian)) + " pixels to the left of the median line")
+                print("angle " + str(angle))
+            else:
+                print("line position is " + str(abs(int((float(image.shape[1]/2))) - averageMedian)) + " pixels to the right of the median line")
+                print("angle " + str(angle))
 
 def main():
     print("Hello World")
-    image = cv2.imread("images/straight.png")
+    image = cv2.imread("images/angle_right_top.png")
 
     cv2.imshow("test", image)
     cv2.waitKey(0)
@@ -116,6 +165,7 @@ def main():
     cv2.imshow("test", cannyImage)
     cv2.waitKey(0)
 
+    print("step 2")
     xTopPositions = getPointsOfChangeTop(cannyImage)
     xBottomPositions = getPointsOfChangeBottom(cannyImage)
 
@@ -123,14 +173,19 @@ def main():
     #plt.imshow(cannyImage)
     #plt.show()
 
+    print("step 3")
     regionOfInterest = findROI(cannyImage)
     cv2.imshow("result", regionOfInterest)
     cv2.waitKey(0)
 
-    angleImage = findAngle(laneImage, xTopPositions, xBottomPositions)
+    print("step 4")
+    angleImage, angle = findAngle(cannyImage, xTopPositions, xBottomPositions)
 
     cv2.imshow("angle", angleImage)
     cv2.waitKey(0)
+
+    print("step 5")
+    findPos(cannyImage)
 
 
 main()
