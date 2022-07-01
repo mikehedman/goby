@@ -141,6 +141,7 @@ def findPos(image):
         if (220 <= averageMedian and averageMedian <= 320):
             print("position does not need to be changed, angle does need to be changed")
             print("line positionis " + str(abs(int((float(image.shape[1]/2))) - averageMedian)) + " pixels away from the median line")
+            print("angle " + str(angle))
         else:
             print("position and angle need to be changed")
             if(averageMedian < (image.shape[1]/2)):
@@ -152,7 +153,7 @@ def findPos(image):
 
 def main():
     print("Hello World")
-    image = cv2.imread("images/angle_right_top.png")
+    image = cv2.imread("images/angle_left_top.png")
 
     cv2.imshow("test", image)
     cv2.waitKey(0)
@@ -182,10 +183,12 @@ def main():
     angleImage, angle = findAngle(cannyImage, xTopPositions, xBottomPositions)
 
     cv2.imshow("angle", angleImage)
-    cv2.waitKey(0)
+
 
     print("step 5")
     findPos(cannyImage)
+
+    cv2.waitKey(0)
 
 
 main()
