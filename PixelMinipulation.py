@@ -153,7 +153,7 @@ def findPos(image):
 
 def main():
     print("Hello World")
-    image = cv2.imread("images/angle_left_top.png")
+    image = cv2.imread("images/line_left.png")
 
     cv2.imshow("test", image)
     cv2.waitKey(0)
@@ -192,3 +192,45 @@ def main():
 
 
 main()
+
+"""
+line is off to the left but they are not perfect
+
+two senarios where we need to make changes:
+if the angle is completly off and we are centered / we are too the left of the image we have a problem
+if the angle is fine but they are but they are not near the pool line
+
+angle does not matter if the position is way off
+if the position is fine but angle is way off, fix the angle
+"""
+
+"""
+haptic feeback
+think in binary:
+tap on right or left shouolder based on position(if position off: touch, it angle is off (more than 5 degrees) and they are on the line: fix angle a liitle)
+
+if(right): touch left sholder
+elif(left): tought right sholder
+else:(straight) fix your corection angle to straighten out
+"""
+"""
+fix tolerances for:
+    angle: be absolute
+    position: get width of the line
+    * as depth increases your width will shrink
+    eg:
+        lane line is 8 inches: lane is 80 inches  (ratio 1:10)
+    base of width
+"""
+"""
+fix ROI
+if we start off wrong and only have one canny image
+"""
+"""
+rasberrypi
+find out the OS used
+find out how to download 'how to install raspbian on raspberry pi'
+"""
+"""
+adafruit.com for how to use motors and camera
+"""

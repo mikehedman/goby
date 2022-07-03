@@ -287,3 +287,5 @@ def main():
         # could show analysis of position visually on the image, but is kind of unnecessary and messy
 
 main()
+
+#Get it to work

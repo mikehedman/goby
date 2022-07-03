@@ -76,7 +76,8 @@ def TROI(image):
     print("x pos: " + str(TXPos))
 
     rectangle = cv2.rectangle(image, (TXPos[0], TYPosL[0]), (TXPos[1], TYPosR[1]), (255, 255, 255), -1)
-
+# make 100 a constant that programmer can change
+# think in relative numbers 30% from the top etc...
     if (TYPosR[0] > 100 and TYPosL[0] > 100):
         return imageText(rectangle, "STOP")
 
@@ -85,7 +86,7 @@ def TROI(image):
 
 def main():
     print("Hello World")
-    image = cv2.imread("images/t_far.png")
+    image = cv2.imread("images/t-past.png")
 
     cv2.imshow("test", image)
     cv2.waitKey(0)
@@ -104,3 +105,5 @@ def main():
     cv2.waitKey(0)
 
 main()
+
+# don't abbriviate create good varibable names
