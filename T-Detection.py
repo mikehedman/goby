@@ -45,7 +45,7 @@ def getPointsOfChangeBottom(image):
     print("Bottom position 2: " + str(xPositions[1]))
     return xPositions
 
-def TROI(image):
+def T_RegionOfIntrest(image):
     xBottomPositions = getPointsOfChangeBottom(image)
 
     pixelOffset = 10
@@ -99,7 +99,7 @@ def main():
     cv2.imshow("test", cannyImage)
     cv2.waitKey(0)
 
-    foundT = TROI(cannyImage)
+    foundT = T_RegionOfIntrest(cannyImage)
 
     cv2.imshow("test", foundT)
     cv2.waitKey(0)
