@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="8619f56e-aad0-4d25-b7b8-38217135c381" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/pixelRatio.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/goby.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/goby.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PoolLineDetection.py" beforeDir="false" afterPath="$PROJECT_DIR$/PoolLineDetection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/T-Detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/T-Detection.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +33,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2B95Y1N4y439oVJVavw9G7dLBXn" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -37,8 +44,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
-  <component name="RunManager" selected="Python.PoolLineDetection">
+  <component name="RunManager">
     <configuration name="PixelMinipulation" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="goby" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -124,6 +132,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
