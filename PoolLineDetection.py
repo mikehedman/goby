@@ -2,6 +2,9 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 import math
+import os
+
+# get the path/directory
 
 # saves time if i want to wright text on images
 def imageText(image, words):
@@ -231,7 +234,8 @@ def findPos(image):
 
 def main():
     # Get the image and make it canny
-    images = ["images/angle_left_top.png","images/angle_right_top.png","images/line_left.png","images/line_right.png","images/straight.png","images/straight-faded.png","images/t-middle.png", "images/t-past.png", "images/t-far.png"]
+    images = ["images/skinny_straight.png", "images/angle_left_skinny.png","images/angle_right_skinny.png","images/left_skinny_straight.png","images/right_skinny_straight.png"]
+
     for i in range (len(images) - 1):
         print("Step 1")
         image = cv2.imread(images[i])
