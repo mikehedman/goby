@@ -52,3 +52,23 @@ if __name__ == '__main__':
     main()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+#Sense the position of the line horizontally
+#just hard code
+# simplify regoin of intrest
+
+# see where line is right to left
+# the ratio between the distance
+# have scale (1 inch left, 12 inch right)
+# v1 take measurement in the the middle
+# v2 take measurement at the top and the bottom to find angle
+
+# definitons:
+# offset percentages:
+# search for boundaries and outliers(using functions, rolling average, straight tolerance)
+# for video
+# tolerance
+# every second take 5 images
+#  takes a breath every 2 seconds
+# average the pixels every stroke, in order take offset
+# Use accelerometer to sense z movement at the end of pool, in order
