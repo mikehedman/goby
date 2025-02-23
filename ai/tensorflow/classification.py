@@ -6,13 +6,13 @@ from os.path import abspath, dirname, join
 
 import matplotlib.pyplot as plt
 import numpy as np
-import shared
 import tensorflow as tf
 from tensorflow.keras import layers
 from tensorflow.keras.models import Sequential
 
 ai_dir = dirname(dirname(abspath(__file__)))
 sys.path.append(ai_dir)
+import shared
 
 project_dir = dirname(dirname(dirname(abspath(__file__))))
 data_dir = pathlib.Path(shared.TRAINING_DIR).with_suffix('')
