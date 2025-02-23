@@ -93,8 +93,6 @@ def make_merged(image):
 
 
 if __name__ == "__main__":
-    print("deprecated, use prepare_model_inputs.py instead")
-    sys.exit(1)
 
     shared.setup_dirs(shared.GENERATED_DIR)
 
