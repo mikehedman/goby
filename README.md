@@ -3,7 +3,7 @@ A system to give feedback to visually impaired swimmers when they are not in the
 
 > [!NOTE]
 > This project is a work in progress. Real world testing is currently showing 87% accuracy of the classifications.
-> @Animar123 is working on a GAN utility to increase the number of training images, which should help resolve the model's overfitting
+> [@Animar123](https://github.com/Animar123) is working on a GAN utility to increase the number of training images, which should help resolve the model's overfitting.
 
 ## Background
 This project is based on the ideas explored in the University of Colorado research project titled "Goby". The lead researcher has graciously agreed to allow us to take up the name, and has provided helpful insights and guidance on our implementation. [Original writup](https://www.annika.co/files/Wearable-Swimming-Aid-Muehlbradt.pdf), [alternative link]( https://dl.acm.org/doi/pdf/10.1145/3132525.3134822).
@@ -17,7 +17,7 @@ There are two main components to the software:
 2. The model builder `classification.py`, which is a TensorFlow model, and is trained to classify images as "good", "left", "right", or "wall".
 There are also some utilities, like the `prepare_model_inputs.py` scritpt, which is used to prepare the model inputs.
 
-Included is the original Canny Edge Detection code, which is used to detect the edges of the lane lines. This code is not used in the final implementation, but is included for reference. Shout out to [@Animar123] (https://github.com/Animar123) for starting up this effort!
+Included is the original Canny Edge Detection code, which is used to detect the edges of the lane lines. This code is not used in the final implementation, but is included for reference. Shout out to [@Animar123](https://github.com/Animar123) for starting up this effort!
 
 ### Developer setup
 Running the `classification.py` script in a venv with tensorflow-metal made building the model run much faster!
