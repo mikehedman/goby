@@ -6,10 +6,15 @@ A system to give feedback to visually impaired swimmers when they are not in the
 > [@Animar123](https://github.com/Animar123) is working on a GAN utility to increase the number of training images, which should help resolve the model's overfitting.
 
 ## Background
-This project is based on the ideas explored in the University of Colorado research project titled "Goby". The lead researcher has graciously agreed to allow us to take up the name, and has provided helpful insights and guidance on our implementation. [Original writup](https://www.annika.co/files/Wearable-Swimming-Aid-Muehlbradt.pdf), [alternative link]( https://dl.acm.org/doi/pdf/10.1145/3132525.3134822).
+This project is based on the ideas explored in the University of Colorado research project titled "Goby". The lead researcher has graciously agreed to allow us to take up the name, and has provided helpful insights and guidance on our implementation. [Original writeup](https://www.annika.co/files/Wearable-Swimming-Aid-Muehlbradt.pdf), [alternative link]( https://dl.acm.org/doi/pdf/10.1145/3132525.3134822).
 
 ## System components
-Raspberry Pi 5, vibration motors, battery, camera, waterproof bag, accelerometer 
+Raspberry Pi 5
+Battery - just a smallish phone charging powercell with a trickle charge mode (so it doesn't turn off due to low current draw)
+Camera - standard Raspberry Pi camera mounted in a 3D printed enclosure
+Accelerometer - To assure that images are only captured when the the camera is pointing straight down
+Haptic motors - When swimmer gets too far left, the left motor buzzes, same for right. When system detects a T or cross, indicating the swimmer is approaching the wall, both motors buzz.  The motors aren't as noticable through the thick plastic bag. I will be trying out waterproof headphones as well.
+Waterproof bag - A heavy clear plastic bag for all the components. The bag has a strap to go around the swimmer's back. I also use a stretchy runner's belt to keep the bottom of the bag secure.
 
 ## Software description
 There are two main components to the software:
